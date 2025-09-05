@@ -41,9 +41,11 @@ spec:
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           {{- if hasKey $registry "name" }}
-          image: "{{ $registry.name }}{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          #image: "{{ $registry.name }}{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          image: mxgrid-docker-releases.repo.cci.nokia.net/onboardingmgr_nok:1.38.5
           {{- else }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          #image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          image: mxgrid-docker-releases.repo.cci.nokia.net/onboardingmgr_nok:1.38.5
           {{- end }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           {{- if .Values.managerArgs.oamServerAddress }}
